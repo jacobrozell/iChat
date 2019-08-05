@@ -99,7 +99,7 @@
                         <outlet property="confirmPasswordTextfield" destination="O34-jO-yDN" id="3ws-ay-u0l"/>
                         <outlet property="emailTextField" destination="udO-hE-fDH" id="d21-nK-M2b"/>
                         <outlet property="passwordTextField" destination="yei-qb-JMA" id="ylI-N7-532"/>
-                        <segue destination="rLE-d4-bJl" kind="presentation" identifier="fromWelcomeToFinishRegistration" id="6iH-kr-dma"/>
+                        <segue destination="rLE-d4-bJl" kind="presentation" identifier="welcomeToCompleteRegister" id="6iH-kr-dma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="148" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Finish Registration View Controller-->
         <scene sceneID="BNQ-pX-L3P">
             <objects>
-                <viewController id="rLE-d4-bJl" sceneMemberID="viewController">
+                <viewController id="rLE-d4-bJl" customClass="FinishRegistrationViewController" customModule="iChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e9x-0o-mRQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

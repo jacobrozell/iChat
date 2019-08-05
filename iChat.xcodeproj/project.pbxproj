@@ -17,6 +17,7 @@
 		0BEDC08A22F4BD6900A37F8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDC08922F4BD6900A37F8F /* Constants.swift */; };
 		0BEDC08C22F4C1EA00A37F8F /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDC08B22F4C1EA00A37F8F /* CollectionReference.swift */; };
 		0BEDC08E22F4C29700A37F8F /* Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDC08D22F4C29700A37F8F /* Helper Functions.swift */; };
+		36306CA222F8075E0099E4D5 /* FinishRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36306CA122F8075E0099E4D5 /* FinishRegistrationViewController.swift */; };
 		C69905780B93190A7E49C362 /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5A9BC6D5B5B3EF699DD165 /* Pods_iChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0BEDC08922F4BD6900A37F8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0BEDC08B22F4C1EA00A37F8F /* CollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
 		0BEDC08D22F4C29700A37F8F /* Helper Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Functions.swift"; sourceTree = "<group>"; };
+		36306CA122F8075E0099E4D5 /* FinishRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinishRegistrationViewController.swift; path = "../../untitled folder/iChat/iChat/FinishRegistrationViewController.swift"; sourceTree = "<group>"; };
 		69135CA634DEFC694F694D2D /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B126FC3CD3706399879EFFB8 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
 		FD5A9BC6D5B5B3EF699DD165 /* Pods_iChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 				0BC93F8222EF6EF700869E7F /* Info.plist */,
 				0BEDC08522F34C1C00A37F8F /* GoogleService-Info.plist */,
 				0BC93F8822EF745C00869E7F /* WelcomeViewController.swift */,
+				36306CA122F8075E0099E4D5 /* FinishRegistrationViewController.swift */,
 				0BEDC08722F4BCEB00A37F8F /* FUser.swift */,
 				0BEDC08922F4BD6900A37F8F /* Constants.swift */,
 				0BEDC08B22F4C1EA00A37F8F /* CollectionReference.swift */,
@@ -224,6 +227,7 @@
 				0BEDC08E22F4C29700A37F8F /* Helper Functions.swift in Sources */,
 				0BC93F8922EF745C00869E7F /* WelcomeViewController.swift in Sources */,
 				0BEDC08C22F4C1EA00A37F8F /* CollectionReference.swift in Sources */,
+				36306CA222F8075E0099E4D5 /* FinishRegistrationViewController.swift in Sources */,
 				0BEDC08A22F4BD6900A37F8F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,7 @@ class WelcomeViewController: UIViewController {
     //MARK: IBActions
     @IBAction func loginPressed(_ sender: Any) {
         dismissKeyboard()
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
             
             ProgressHUD.showError("Email/Password field is empty!")
             return
@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: Any) {
         dismissKeyboard()
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
+        guard let _ = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
             
             ProgressHUD.showError("All fields are required!")
             return
@@ -81,6 +81,6 @@ class WelcomeViewController: UIViewController {
     }
     
     func registerUser() {
-        prese
+        
     }
 }
