@@ -81,6 +81,18 @@ class WelcomeViewController: UIViewController {
     }
     
     func registerUser() {
-        
+        performSegue(withIdentifier: "welcomeToCompleteRegister", sender: self)
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "welcomeToCompleteRegister" {
+            let vc = segue.destination as! FinishRegistrationViewController
+            vc.email = emailTextField.text!
+            vc.password = passwordTextField.text!
+            
+            cleanTextFields()
+            dismissKeyboard()
+        }
     }
 }
