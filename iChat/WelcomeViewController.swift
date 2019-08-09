@@ -41,13 +41,12 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: Any) {
         dismissKeyboard()
-        guard let _ = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
-            
+        if emailTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextfield.text == "" {
             ProgressHUD.showError("All fields are required!")
             return
         }
         
-        if password == confirmPassword {
+        if passwordTextField.text == confirmPasswordTextfield.text {
             registerUser()
         } else {
             ProgressHUD.showError("Passwords must match!")

@@ -62,10 +62,10 @@ class FUser {
     
     init(_dictionary: NSDictionary) {
         
-        objectId = _dictionary[Constants.kOBJECTID] as! String
-        pushId = _dictionary[Constants.kPUSHID] as? String
+        objectId = _dictionary[Constants.OBJECTID] as! String
+        pushId = _dictionary[Constants.PUSHID] as? String
         
-        if let created = _dictionary[Constants.kCREATEDAT] {
+        if let created = _dictionary[Constants.CREATEDAT] {
             if (created as! String).count != 14 {
                 createdAt = Date()
             } else {
@@ -74,7 +74,7 @@ class FUser {
         } else {
             createdAt = Date()
         }
-        if let updateded = _dictionary[Constants.kUPDATEDAT] {
+        if let updateded = _dictionary[Constants.UPDATEDAT] {
             if (updateded as! String).count != 14 {
                 updatedAt = Date()
             } else {
@@ -84,71 +84,70 @@ class FUser {
             updatedAt = Date()
         }
         
-        if let mail = _dictionary[Constants.kEMAIL] {
+        if let mail = _dictionary[Constants.EMAIL] {
             email = mail as! String
         } else {
             email = ""
         }
-        if let fname = _dictionary[Constants.kFIRSTNAME] {
+        if let fname = _dictionary[Constants.FIRSTNAME] {
             firstname = fname as! String
         } else {
             firstname = ""
         }
-        if let lname = _dictionary[Constants.kLASTNAME] {
+        if let lname = _dictionary[Constants.LASTNAME] {
             lastname = lname as! String
         } else {
             lastname = ""
         }
         fullname = firstname + " " + lastname
-        if let avat = _dictionary[Constants.kAVATAR] {
+        if let avat = _dictionary[Constants.AVATAR] {
             avatar = avat as! String
         } else {
             avatar = ""
         }
-        if let onl = _dictionary[Constants.kISONLINE] {
+        if let onl = _dictionary[Constants.ISONLINE] {
             isOnline = onl as! Bool
         } else {
             isOnline = false
         }
-        if let phone = _dictionary[Constants.kPHONE] {
+        if let phone = _dictionary[Constants.PHONE] {
             phoneNumber = phone as! String
         } else {
             phoneNumber = ""
         }
-        if let countryC = _dictionary[Constants.kCOUNTRYCODE] {
+        if let countryC = _dictionary[Constants.COUNTRYCODE] {
             countryCode = countryC as! String
         } else {
             countryCode = ""
         }
-        if let cont = _dictionary[Constants.kCONTACT] {
+        if let cont = _dictionary[Constants.CONTACT] {
             contacts = cont as! [String]
         } else {
             contacts = []
         }
-        if let block = _dictionary[Constants.kBLOCKEDUSERID] {
+        if let block = _dictionary[Constants.BLOCKEDUSERID] {
             blockedUsers = block as! [String]
         } else {
             blockedUsers = []
         }
         
-        if let lgm = _dictionary[Constants.kLOGINMETHOD] {
+        if let lgm = _dictionary[Constants.LOGINMETHOD] {
             loginMethod = lgm as! String
         } else {
             loginMethod = ""
         }
-        if let cit = _dictionary[Constants.kCITY] {
+        if let cit = _dictionary[Constants.CITY] {
             city = cit as! String
         } else {
             city = ""
         }
-        if let count = _dictionary[Constants.kCOUNTRY] {
+        if let count = _dictionary[Constants.COUNTRY] {
             country = count as! String
         } else {
             country = ""
         }
         
     }
-    
     
     //MARK: Returning current user funcs
     
@@ -160,15 +159,11 @@ class FUser {
     class func currentUser () -> FUser? {
         
         if Auth.auth().currentUser != nil {
-            
-            if let dictionary = UserDefaults.standard.object(forKey: Constants.kCURRENTUSER) {
-                
+            if let dictionary = UserDefaults.standard.object(forKey: Constants.CURRENTUSER) {
                 return FUser.init(_dictionary: dictionary as! NSDictionary)
             }
         }
-        
         return nil
-        
     }
     
     
@@ -181,7 +176,6 @@ class FUser {
             if error != nil {
                 completion(error)
                 return
-                
             } else {
                 //get user from firebase and save locally
                 fetchCurrentUserFromFirestore(userId: firUser!.user.uid)
@@ -202,7 +196,7 @@ class FUser {
                 return
             }
             
-            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: Constants.kEMAIL, _phoneNumber: "", _city: "", _country: "")
+            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: Constants.EMAIL, _phoneNumber: "", _city: "", _country: "")
             
             
             saveUserLocally(fUser: fUser)
@@ -258,10 +252,10 @@ class FUser {
     //MARK: LogOut func
     class func logOutCurrentUser(completion: @escaping (_ success: Bool) -> Void) {
         
-        userDefaults.removeObject(forKey: Constants.kPUSHID)
+        userDefaults.removeObject(forKey: Constants.PUSHID)
         removeOneSignalId()
         
-        userDefaults.removeObject(forKey: Constants.kCURRENTUSER)
+        userDefaults.removeObject(forKey: Constants.CURRENTUSER)
         userDefaults.synchronize()
         
         do {
@@ -299,7 +293,7 @@ func saveUserToFirestore(fUser: FUser) {
 
 
 func saveUserLocally(fUser: FUser) {
-    UserDefaults.standard.set(userDictionaryFrom(user: fUser), forKey: Constants.kCURRENTUSER)
+    UserDefaults.standard.set(userDictionaryFrom(user: fUser), forKey: Constants.CURRENTUSER)
     UserDefaults.standard.synchronize()
 }
 
@@ -316,13 +310,10 @@ func fetchCurrentUserFromFirestore(userId: String) {
         if snapshot.exists {
             print("updated current users param")
             
-            UserDefaults.standard.setValue(snapshot.data()! as NSDictionary, forKeyPath: Constants.kCURRENTUSER)
+            UserDefaults.standard.setValue(snapshot.data()! as NSDictionary, forKeyPath: Constants.CURRENTUSER)
             UserDefaults.standard.synchronize()
-            
         }
-        
     }
-    
 }
 
 
@@ -339,7 +330,6 @@ func fetchCurrentUserFromFirestore(userId: String, completion: @escaping (_ user
         } else {
             completion(nil)
         }
-        
     }
 }
 
@@ -351,7 +341,7 @@ func userDictionaryFrom(user: FUser) -> NSDictionary {
     let createdAt = dateFormatter().string(from: user.createdAt)
     let updatedAt = dateFormatter().string(from: user.updatedAt)
     
-    return NSDictionary(objects: [user.objectId,  createdAt, updatedAt, user.email, user.loginMethod, user.pushId!, user.firstname, user.lastname, user.fullname, user.avatar, user.contacts, user.blockedUsers, user.isOnline, user.phoneNumber, user.countryCode, user.city, user.country], forKeys: [Constants.kOBJECTID as NSCopying, Constants.kCREATEDAT as NSCopying, Constants.kUPDATEDAT as NSCopying, Constants.kEMAIL as NSCopying, Constants.kLOGINMETHOD as NSCopying, Constants.kPUSHID as NSCopying, Constants.kFIRSTNAME as NSCopying, Constants.kLASTNAME as NSCopying, Constants.kFULLNAME as NSCopying, Constants.kAVATAR as NSCopying, Constants.kCONTACT as NSCopying, Constants.kBLOCKEDUSERID as NSCopying, Constants.kISONLINE as NSCopying, Constants.kPHONE as NSCopying, Constants.kCOUNTRYCODE as NSCopying, Constants.kCITY as NSCopying, Constants.kCOUNTRY as NSCopying])
+    return NSDictionary(objects: [user.objectId,  createdAt, updatedAt, user.email, user.loginMethod, user.pushId!, user.firstname, user.lastname, user.fullname, user.avatar, user.contacts, user.blockedUsers, user.isOnline, user.phoneNumber, user.countryCode, user.city, user.country], forKeys: [Constants.OBJECTID as NSCopying, Constants.CREATEDAT as NSCopying, Constants.UPDATEDAT as NSCopying, Constants.EMAIL as NSCopying, Constants.LOGINMETHOD as NSCopying, Constants.PUSHID as NSCopying, Constants.FIRSTNAME as NSCopying, Constants.LASTNAME as NSCopying, Constants.FULLNAME as NSCopying, Constants.AVATAR as NSCopying, Constants.CONTACT as NSCopying, Constants.BLOCKEDUSERID as NSCopying, Constants.ISONLINE as NSCopying, Constants.PHONE as NSCopying, Constants.COUNTRYCODE as NSCopying, Constants.CITY as NSCopying, Constants.COUNTRY as NSCopying])
     
 }
 
@@ -392,37 +382,31 @@ func getUsersFromFirestore(withIds: [String], completion: @escaping (_ usersArra
 }
 
 
-func updateCurrentUserInFirestore(withValues : [String : Any], completion: @escaping (_ error: Error?) -> Void) {
+func updateCurrentUserInFirestore(with values : [String : Any], completion: @escaping (_ error: Error?) -> Void) {
     
-    if let dictionary = UserDefaults.standard.object(forKey: Constants.kCURRENTUSER) {
+    if let dictionary = UserDefaults.standard.object(forKey: Constants.CURRENTUSER) {
         
-        var tempWithValues = withValues
-        
+        var tempWithValues = values
         let currentUserId = FUser.currentId()
-        
-        let updatedAt = dateFormatter().string(from: Date())
-        
-        tempWithValues[Constants.kUPDATEDAT] = updatedAt
+        tempWithValues[Constants.UPDATEDAT] = dateFormatter().string(from: Date())
         
         let userObject = (dictionary as! NSDictionary).mutableCopy() as! NSMutableDictionary
         
         userObject.setValuesForKeys(tempWithValues)
         
-        reference(.User).document(currentUserId).updateData(withValues) { (error) in
+        reference(.User).document(currentUserId).updateData(values) { (error) in
             
             if error != nil {
-                
                 completion(error)
                 return
             }
             
             //update current user
-            UserDefaults.standard.setValue(userObject, forKeyPath: Constants.kCURRENTUSER)
+            UserDefaults.standard.setValue(userObject, forKeyPath: Constants.CURRENTUSER)
             UserDefaults.standard.synchronize()
             
             completion(error)
         }
-        
     }
 }
 
@@ -432,7 +416,7 @@ func updateOneSignalId() {
     
     if FUser.currentUser() != nil {
         
-        if let pushId = UserDefaults.standard.string(forKey: Constants.kPUSHID) {
+        if let pushId = UserDefaults.standard.string(forKey: Constants.PUSHID) {
             setOneSignalId(pushId: pushId)
         } else {
             removeOneSignalId()
@@ -453,7 +437,7 @@ func removeOneSignalId() {
 //MARK: Updating Current user funcs
 func updateCurrentUserOneSignalId(newId: String) {
     
-    updateCurrentUserInFirestore(withValues: [Constants.kPUSHID : newId]) { (error) in
+    updateCurrentUserInFirestore(with: [Constants.PUSHID : newId]) { (error) in
         if error != nil {
             print("error updating push id \(error!.localizedDescription)")
         }

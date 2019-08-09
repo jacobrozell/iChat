@@ -20,113 +20,111 @@ enum Constants {
 
 
     //IDS and Keys
-    public static let kFILEREFERENCE = ""
-    public static let kONESIGNALAPPID = ""
-    public static let kSINCHKEY = ""
-    public static let kSINCHSECRET = ""
-    public static let kAPPURL = ""
+    public static let FILEREFERENCE = ""
+    public static let ONESIGNALAPPID = ""
+    public static let SINCHKEY = ""
+    public static let SINCHSECRET = ""
+    public static let APPURL = ""
 
 
     //Firebase Headers
-    public static let kUSER_PATH = "User"
-    public static let kTYPINGPATH_PATH = "Typing"
-    public static let kRECENT_PATH = "Recent"
-    public static let kMESSAGE_PATH = "Message"
-    public static let kGROUP_PATH = "Group"
-    public static let kCALL_PATH = "Call"
+    public static let USER_PATH = "User"
+    public static let TYPINGPATH_PATH = "Typing"
+    public static let RECENT_PATH = "Recent"
+    public static let MESSAGE_PATH = "Message"
+    public static let GROUP_PATH = "Group"
+    public static let CALL_PATH = "Call"
 
     //FUser
-    public static let kOBJECTID = "objectId"
-    public static let kCREATEDAT = "createdAt"
-    public static let kUPDATEDAT = "updatedAt"
-    public static let kEMAIL = "email"
-    public static let kPHONE = "phone"
-    public static let kCOUNTRYCODE = "countryCode"
-    public static let kFACEBOOK = "facebook"
-    public static let kLOGINMETHOD = "loginMethod"
-    public static let kPUSHID = "pushId"
-    public static let kFIRSTNAME = "firstname"
-    public static let kLASTNAME = "lastname"
-    public static let kFULLNAME = "fullname"
-    public static let kAVATAR = "avatar"
-    public static let kCURRENTUSER = "currentUser"
-    public static let kISONLINE = "isOnline"
-    public static let kVERIFICATIONCODE = "firebase_verification"
-    public static let kCITY = "city"
-    public static let kCOUNTRY = "country"
-    public static let kBLOCKEDUSERID = "blockedUserId"
+    public static let OBJECTID = "objectId"
+    public static let CREATEDAT = "createdAt"
+    public static let UPDATEDAT = "updatedAt"
+    public static let EMAIL = "email"
+    public static let PHONE = "phone"
+    public static let COUNTRYCODE = "countryCode"
+    public static let FACEBOOK = "facebook"
+    public static let LOGINMETHOD = "loginMethod"
+    public static let PUSHID = "pushId"
+    public static let FIRSTNAME = "firstname"
+    public static let LASTNAME = "lastname"
+    public static let FULLNAME = "fullname"
+    public static let AVATAR = "avatar"
+    public static let CURRENTUSER = "currentUser"
+    public static let ISONLINE = "isOnline"
+    public static let VERIFICATIONCODE = "firebase_verification"
+    public static let CITY = "city"
+    public static let COUNTRY = "country"
+    public static let BLOCKEDUSERID = "blockedUserId"
 
 
-    //
-    public static let kBACKGROUBNDIMAGE = "backgroundImage"
-    public static let kSHOWAVATAR = "showAvatar"
-    public static let kPASSWORDPROTECT = "passwordProtect"
-    public static let kFIRSTRUN = "firstRun"
-    public static let kNUMBEROFMESSAGES = 10
-    public static let kMAXDURATION = 120.0
-    public static let kAUDIOMAXDURATION = 120.0
-    public static let kSUCCESS = 2
+    public static let BACKGROUBNDIMAGE = "backgroundImage"
+    public static let SHOWAVATAR = "showAvatar"
+    public static let PASSWORDPROTECT = "passwordProtect"
+    public static let FIRSTRUN = "firstRun"
+    public static let NUMBEROFMESSAGES = 10
+    public static let MAXDURATION = 120.0
+    public static let AUDIOMAXDURATION = 120.0
+    public static let SUCCESS = 2
 
     //recent
-    public static let kCHATROOMID = "chatRoomID"
-    public static let kUSERID = "userId"
-    public static let kDATE = "date"
-    public static let kPRIVATE = "private"
-    public static let kGROUP = "group"
-    public static let kGROUPID = "groupId"
-    public static let kRECENTID = "recentId"
-    public static let kMEMBERS = "members"
-    public static let kMESSAGE = "message"
-    public static let kMEMBERSTOPUSH = "membersToPush"
-    public static let kDISCRIPTION = "discription"
-    public static let kLASTMESSAGE = "lastMessage"
-    public static let kCOUNTER = "counter"
-    public static let kTYPE = "type"
-    public static let kWITHUSERUSERNAME = "withUserUserName"
-    public static let kWITHUSERUSERID = "withUserUserID"
-    public static let kOWNERID = "ownerID"
-    public static let kSTATUS = "status"
-    public static let kMESSAGEID = "messageId"
-    public static let kNAME = "name"
-    public static let kSENDERID = "senderId"
-    public static let kSENDERNAME = "senderName"
-    public static let kTHUMBNAIL = "thumbnail"
-    public static let kISDELETED = "isDeleted"
+    public static let CHATROOMID = "chatRoomID"
+    public static let USERID = "userId"
+    public static let DATE = "date"
+    public static let PRIVATE = "private"
+    public static let GROUP = "group"
+    public static let GROUPID = "groupId"
+    public static let RECENTID = "recentId"
+    public static let MEMBERS = "members"
+    public static let MESSAGE = "message"
+    public static let MEMBERSTOPUSH = "membersToPush"
+    public static let DISCRIPTION = "discription"
+    public static let LASTMESSAGE = "lastMessage"
+    public static let COUNTER = "counter"
+    public static let TYPE = "type"
+    public static let WITHUSERUSERNAME = "withUserUserName"
+    public static let WITHUSERUSERID = "withUserUserID"
+    public static let OWNERID = "ownerID"
+    public static let STATUS = "status"
+    public static let MESSAGEID = "messageId"
+    public static let NAME = "name"
+    public static let SENDERID = "senderId"
+    public static let SENDERNAME = "senderName"
+    public static let THUMBNAIL = "thumbnail"
+    public static let ISDELETED = "isDeleted"
 
     //Contacts
-    public static let kCONTACT = "contact"
-    public static let kCONTACTID = "contactId"
+    public static let CONTACT = "contact"
+    public static let CONTACTID = "contactId"
 
     //message types
-    public static let kPICTURE = "picture"
-    public static let kTEXT = "text"
-    public static let kVIDEO = "video"
-    public static let kAUDIO = "audio"
-    public static let kLOCATION = "location"
+    public static let PICTURE = "picture"
+    public static let TEXT = "text"
+    public static let VIDEO = "video"
+    public static let AUDIO = "audio"
+    public static let LOCATION = "location"
 
     //coordinates
-    public static let kLATITUDE = "latitude"
-    public static let kLONGITUDE = "longitude"
+    public static let LATITUDE = "latitude"
+    public static let LONGITUDE = "longitude"
 
 
     //message status
-    public static let kDELIVERED = "delivered"
-    public static let kREAD = "read"
-    public static let kREADDATE = "readDate"
-    public static let kDELETED = "deleted"
+    public static let DELIVERED = "delivered"
+    public static let READ = "read"
+    public static let READDATE = "readDate"
+    public static let DELETED = "deleted"
 
 
     //push
-    public static let kDEVICEID = "deviceId"
+    public static let DEVICEID = "deviceId"
 
 
     //Call
-    public static let kISINCOMING = "isIncoming"
-    public static let kCALLERID = "callerId"
-    public static let kCALLERFULLNAME = "callerFullName"
-    public static let kCALLSTATUS = "callStatus"
-    public static let kWITHUSERFULLNAME = "withUserFullName"
-    public static let kCALLERAVATAR = "callerAvatar"
-    public static let kWITHUSERAVATAR = "withUserAvatar"
+    public static let ISINCOMING = "isIncoming"
+    public static let CALLERID = "callerId"
+    public static let CALLERFULLNAME = "callerFullName"
+    public static let CALLSTATUS = "callStatus"
+    public static let WITHUSERFULLNAME = "withUserFullName"
+    public static let CALLERAVATAR = "callerAvatar"
+    public static let WITHUSERAVATAR = "withUserAvatar"
 }
-
