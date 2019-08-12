@@ -39,7 +39,6 @@ class FinishRegistrationViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         ProgressHUD.show("Registering...", interaction: false)
         guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let _ = countyTextField.text, let _ = cityTextField.text, let _ = phoneTextField.text else {
-            ProgressHUD.dismiss()
             ProgressHUD.showError("All fields are required!")
             return
         }
@@ -47,14 +46,12 @@ class FinishRegistrationViewController: UIViewController {
         FUser.registerUserWith(email: email, password: password, firstName: firstName, lastName: lastName) { (error) in
             // Send to Messages
             if error != nil {
-                ProgressHUD.dismiss()
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
             
             self.registerUser()
         }
-        
     }
     
     //MARK: Helper Functions
@@ -99,11 +96,17 @@ class FinishRegistrationViewController: UIViewController {
                 }
                 return
             }
-            
-            ProgressHUD.dismiss()
             // Go to App
-            print("Sucess")
+            self.goToApp()
         }
+    }
+    
+    func goToApp() {
+        cleanTextFields()
+        dismissKeyboard()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [Constants.USERID: FUser.currentId()])
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication")
+        self.present(mainView, animated: true, completion: nil)
     }
     
     func dismissKeyboard() {

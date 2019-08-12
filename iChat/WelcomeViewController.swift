@@ -75,8 +75,9 @@ class WelcomeViewController: UIViewController {
         ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
-        
-        //present here the next main view
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [Constants.USERID: FUser.currentId()])
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication")
+        self.present(mainView, animated: true, completion: nil)
     }
     
     func registerUser() {
