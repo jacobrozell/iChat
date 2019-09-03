@@ -210,8 +210,19 @@ extension UserTableViewController: ChatNetworking {
 
 extension UserTableViewController: UserTableViewCellDelegate {
     func didTapAvatarImage(indexPath: IndexPath) {
-        print("user tapped at \(indexPath)")
+        let profileView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as! ProfileViewTableViewController
+        
+        var user: FUser
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            let sectionTitle = self.sectionTitlesList[indexPath.section]
+            let users = self.allUsersGrouped[sectionTitle]
+            user = users![indexPath.row]
+        }
+        
+        profileView.user = user
+        self.navigationController?.pushViewController(profileView, animated: true)
     }
-    
-    
 }
