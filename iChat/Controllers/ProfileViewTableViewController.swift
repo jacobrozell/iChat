@@ -18,9 +18,12 @@ class ProfileViewTableViewController: UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     
     var user: FUser?
+    let color = UIColor(hex: "#BEBEBE", andAlpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = color
+        self.tableView.tableFooterView = UIView()
         setupUI()
     }
     
@@ -71,7 +74,7 @@ class ProfileViewTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = color
         return view
     }
     
