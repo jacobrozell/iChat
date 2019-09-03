@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseDatabase
+import FirebaseFirestore
 
 public var recentBadgeHandler: ListenerRegistration?
 let userDefaults = UserDefaults.standard

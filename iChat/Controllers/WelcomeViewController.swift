@@ -24,7 +24,7 @@ class WelcomeViewController: UIViewController {
     //MARK: IBActions
     @IBAction func loginPressed(_ sender: Any) {
         dismissKeyboard()
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
             
             ProgressHUD.showError("Email/Password field is empty!")
             return
@@ -41,13 +41,12 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: Any) {
         dismissKeyboard()
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text else {
-            
+        if emailTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextfield.text == "" {
             ProgressHUD.showError("All fields are required!")
             return
         }
         
-        if password == confirmPassword {
+        if passwordTextField.text == confirmPasswordTextfield.text {
             registerUser()
         } else {
             ProgressHUD.showError("Passwords must match!")
@@ -76,11 +75,24 @@ class WelcomeViewController: UIViewController {
         ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
-        
-        //present here the next main view
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [Constants.USERID: FUser.currentId()])
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication")
+        self.present(mainView, animated: true, completion: nil)
     }
     
     func registerUser() {
-        prese
+        performSegue(withIdentifier: "welcomeToCompleteRegister", sender: self)
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "welcomeToCompleteRegister" {
+            let vc = segue.destination as! FinishRegistrationViewController
+            vc.email = emailTextField.text!
+            vc.password = passwordTextField.text!
+            
+            cleanTextFields()
+            dismissKeyboard()
+        }
     }
 }
