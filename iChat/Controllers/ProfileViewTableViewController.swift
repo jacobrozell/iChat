@@ -18,11 +18,9 @@ class ProfileViewTableViewController: UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     
     var user: FUser?
-    let color = UIColor(hex: "#BEBEBE", andAlpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = color
         self.tableView.tableFooterView = UIView()
         setupUI()
     }
@@ -36,12 +34,33 @@ class ProfileViewTableViewController: UITableViewController {
     
     
     @IBAction func blockButtonPressed(_ sender: UIButton) {
+        
+        var currentBlockedIds = FUser.currentUser()!.blockedUsers
+        
+        if currentBlockedIds.contains(user!.objectId) {
+            currentBlockedIds.remove(at: currentBlockedIds.firstIndex(of: user!.objectId)!)
+        } else {
+            currentBlockedIds.append(user!.objectId)
+        }
+        
+        updateCurrentUserInFirestore(with: [Constants.BLOCKEDUSERID : currentBlockedIds]) { (error) in
+            if error != nil {
+                print("error \(error!.localizedDescription)")
+                return
+            }
+            
+            self.updateBlockStatus()
+            
+            
+        }
     }
     
     
     // MARK: Setup UI
     func setupUI() {
         guard let user = user else {return}
+        
+        updateBlockStatus()
         
         self.title = "Profile"
         fullNameLabel.text = user.fullname
@@ -56,6 +75,14 @@ class ProfileViewTableViewController: UITableViewController {
     
     func updateBlockStatus() {
         
+        // If the user is looking at his own profile, hide the buttons else show the buttons
+        let shouldBeHidden: Bool = !(user!.objectId != FUser.currentId())
+        blockButtonOutlet.isHidden = shouldBeHidden
+        messageButtonOutlet.isHidden = shouldBeHidden
+        callButtonOutlet.isHidden = shouldBeHidden
+        
+        let blockTitle: String = (FUser.currentUser()!.blockedUsers.contains(user!.objectId)) ? "Unblock User" : "Block User"
+        blockButtonOutlet.setTitle(blockTitle, for: .normal)
     }
     
     
@@ -74,7 +101,6 @@ class ProfileViewTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = color
         return view
     }
     
