@@ -48,10 +48,7 @@ class ProfileViewTableViewController: UITableViewController {
                 print("error \(error!.localizedDescription)")
                 return
             }
-            
             self.updateBlockStatus()
-            
-            
         }
     }
     
@@ -63,7 +60,7 @@ class ProfileViewTableViewController: UITableViewController {
         updateBlockStatus()
         
         self.title = "Profile"
-        fullNameLabel.text = user.fullname
+        fullNameLabel.text = user.fullname.capitalized
         phoneNumberLabel.text = user.phoneNumber
         updateBlockStatus()
         imageFromData(pictureData: user.avatar) { (avatarImage) in

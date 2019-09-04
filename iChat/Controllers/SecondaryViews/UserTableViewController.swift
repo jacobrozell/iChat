@@ -68,7 +68,7 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuse, for: indexPath) as! UserTableViewCell
         
         var user: FUser
         if searchController.isActive && searchController.searchBar.text != nil {
@@ -109,6 +109,22 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        var user: FUser
+        if searchController.isActive && searchController.searchBar.text != nil {
+            user = filteredUsers[indexPath.row]
+        } else {
+            let sectionTitle = self.sectionTitlesList[indexPath.section] // was row
+            let users = self.allUsersGrouped[sectionTitle]
+            
+            user = users![indexPath.row]
+        }
+        
+        startPrivateChat(user1: FUser.currentUser()!, user2: user)
     }
     
     // MARK: IBActions

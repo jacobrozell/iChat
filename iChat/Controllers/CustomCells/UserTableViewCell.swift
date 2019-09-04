@@ -13,6 +13,9 @@ protocol UserTableViewCellDelegate {
 }
 
 class UserTableViewCell: UITableViewCell {
+    
+    static let reuse = "UserCell"
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     
